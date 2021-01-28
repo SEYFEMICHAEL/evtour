@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-telegram]",(function(){var t=$(this);t.data("telegram-track")&&t.one("click",(function(a){$.ajax(t.data("telegram-track"),{method:"post"})}))}))}));

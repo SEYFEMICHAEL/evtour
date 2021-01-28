@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-user-notice]",(function(){var e=$(this),t=e.data("user-notice"),a=t.type,n=(n=t.message||"")||e.find(".message__content").html();e.remove(),$.roam_notify(a,n)}))}));

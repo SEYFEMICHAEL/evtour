@@ -1,0 +1,1 @@
+OAM.ready((function(){$("body").find("[data-listing-form]").on("change",":checkbox, [data-listing-form-trigger-change]",(function(t){$(t.delegateTarget).trigger("submit")}))}));

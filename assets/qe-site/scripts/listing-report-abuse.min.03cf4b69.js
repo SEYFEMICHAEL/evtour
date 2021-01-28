@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-listing-report-abuse]",(function(){$(this).on("click",(function(){$(".listing-page__sidebar__inner--contact").toggle(),$(".listing-page__sidebar__inner--abuse").toggle()}))}))}));

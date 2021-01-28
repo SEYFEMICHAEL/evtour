@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-faq]",(function(){var t=$(this),c=t.data("faq-toggle-class");t.removeClass(c),t.on("click","[data-faq-trigger]",(function(a){t.toggleClass(c)}))}))}));

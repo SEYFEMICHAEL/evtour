@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-listing-card-contact]",(function(){var n=$(this);n.find("form").on("ajax:success",(function(a,t,i,c){setTimeout((function(){n.find("[data-listing-card-show-email]").trigger("click"),dot2val.get(t,"data.view")&&n.replaceWith(dot2val.get(t,"data.view"))}),1500)}))}))}));

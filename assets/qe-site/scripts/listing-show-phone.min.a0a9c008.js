@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-listing-show-phone]",(function(){$(this).on("submit",(function(t){t.preventDefault();var a=$(t.currentTarget);$.ajax(a.attr("action"),{method:a.attr("method"),data:a.serialize()}),a.remove(),$(a.data("target-container")).toggleClass(a.data("target-toggle"))}))}))}));

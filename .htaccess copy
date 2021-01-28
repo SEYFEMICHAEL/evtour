@@ -1,0 +1,14 @@
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+# Apache config
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+# nginx config
+#if ($filename ~* ^.*?\.(eot)|(ttf)|(woff)$){
+#    add_header Access-Control-Allow-Origin *;
+#}

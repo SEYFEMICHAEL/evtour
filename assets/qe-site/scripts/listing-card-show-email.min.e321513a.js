@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-listing-card-show-email]",(function(){$(this).on("click",(function(a){a.preventDefault();var t=$(a.currentTarget);t.parents(t.data("listing-card-show-email-container")).toggleClass(t.data("listing-card-show-email-toggle"))}))}))}));

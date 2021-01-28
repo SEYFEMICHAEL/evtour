@@ -1,0 +1,23 @@
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+# Apache config
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+#image config
+RewriteRule ^(images)(.*)/$ 404 [L] #deny images listing because we have allowed access to images below
+RewriteRule ^(images)/(.*) $1/$2 [L]
+
+Header set Access-Control-Allow-Origin '*'
+
+
+# nginx config
+#if ($filename ~* ^.*?\.(eot)|(ttf)|(woff)$){
+#    add_header Access-Control-Allow-Origin *;
+#}

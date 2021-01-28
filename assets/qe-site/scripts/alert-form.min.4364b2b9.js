@@ -1,0 +1,1 @@
+OAM.ready((function(){arriveEach("[data-alert-form-toggle]",(function(){var t=$(this),e=$("[data-alert-form]");t.on("click",(function(a){a.preventDefault(),e.show(),t.hide()}))}))}));

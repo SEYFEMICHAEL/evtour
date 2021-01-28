@@ -1,0 +1,21 @@
+{
+    "name": "Qefira",
+    "short_name": "Qefira",
+    "icons": [
+        {
+            "src": "/assets/qe-site/favicon/android-chrome-192x192.6f44579b.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/qe-site/favicon/android-chrome-512x512.9c93cecd.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#e03336",
+    "background_color": "#e03336",
+    "display": "standalone",
+    "start_url": "/?utm_source=pwa",
+    "scope": "/"
+}
