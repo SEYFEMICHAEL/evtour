@@ -108,11 +108,11 @@ class BookingCtrl extends CI_Controller {
     }
     public function cancelBook($id='0'){
         print_r($id);
-        $this->Book->delete_by_id($id);
+        $this->Book->deletebook($id);
         // $this->load->view('forms/booking');
-        // $url='viewbooking/'.$this->session->userdata('');
+         $url='viewbooking/'.$this->session->userdata('id');
         
-        redirect(base_url('viewbooking/'.$id.''));
+        redirect(base_url($url));
     }
 
     public function viewbook($id='0'){

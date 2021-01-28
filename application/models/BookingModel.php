@@ -123,6 +123,14 @@ $this->db->query($sql, array($code, $id));
 		return $this->db->affected_rows();
 	}
 
+	public function deletebook($id)
+	{   $sql = "DELETE  FROM booking WHERE book_id = ? AND user_id = ?";
+		$this->db->query($sql, [$id, $this->session->userdata('id')]);
+		// $builder->where('book_id', $id);
+		// $builder->delete(); 
+	}
+
+	
 	public function delete_by_id($id)
 	{
 		
