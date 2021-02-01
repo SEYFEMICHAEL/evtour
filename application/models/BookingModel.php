@@ -105,6 +105,7 @@ $this->db->query($sql, array($code, $id));
 	{
 		$this->db->from($this->table);
 		$this->db->where('user_id',$id);
+		$this->db->order_by('book_id', 'desc');
 		$query = $this->db->get();
 
 		//return $query->row();only one row $place,$name

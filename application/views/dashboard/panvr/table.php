@@ -26,7 +26,22 @@ else {$id=$this->session->userdata("id");
         <link href="<?php echo base_url();?>assets/dashboard/css/menu.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url();?>assets/dashboard/css/style.css" rel="stylesheet">
         <link href="<?php echo base_url('assets/vendor/datatables/css/dataTables.bootstrap.min.css')?>" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/summernote/summernote.min.css" type="text/css">
+<style>
+    /* .modal{
+    display: block !important; /* I added this to see the modal, you don't need this 
+} */
 
+/* Important part */
+/* .modal-dialog{
+    overflow-y: initial !important
+} */
+.modal-body{
+    height: 80vh;
+    overflow-y: auto;
+}
+</style>
     </head>
 
     <body class="sticky-header">
@@ -54,7 +69,7 @@ else {$id=$this->session->userdata("id");
                             <a href="<?php echo base_url('admin');?>"><i class="mdi mdi-gauge"></i> <span>Admin Dashboard</span></a>
                         </li>
                         
-                        <li class="active">
+                        <li class="">
                             <a href="<?php echo base_url('admin/usermgmt');?>"><i class="mdi mdi-account-multiple-outline"></i> <span>User Managment</span></a>
                         </li>
                         
@@ -65,7 +80,7 @@ else {$id=$this->session->userdata("id");
                         <li class="">
                             <a href="<?php echo base_url('admin/tourmgmt');?>"><i class="mdi mdi-google-earth"></i> <span>Tours</span></a>
                         </li>
-                        <li class="">
+                        <li class="active">
                             <a href="<?php echo base_url('admin/panvrmgmt');?>"><i class="mdi mdi-google-earth"></i> <span>VR</span></a>
                         </li>
 
@@ -126,7 +141,7 @@ else {$id=$this->session->userdata("id");
                                                 <div class="text-center"><i class="ti-plus"></i></div>
                                             </div>
                                             <div class="col-4">
-                                                <div class="btn btn-primary" onClick="add_person()">Add</div>
+                                                <div class="btn btn-primary" onClick="add_tour()">Add</div>
                                             </div> 
                                         </div>
                                    </div> 
@@ -150,19 +165,18 @@ else {$id=$this->session->userdata("id");
                         <div class="col-lg-12 col-sm-12">
                             <div class="card m-b-30">
                                 <div class="card-body">
-                                    <h5 class="header-title pb-3">Users Table</h5>           
+                                    <h5 class="header-title pb-3">Tour Table</h5>           
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="table-responsive">
                                                 <table id="table" class="table table-hover m-b-0">
                                                     <thead>
                                                         <tr> 
-                                                            <th>First Name</th>
-                                                            <th>Last Name</th>
-                                                            <th>Username</th>
-                                                            <th>Email</th>
-                                                            <th>Phone</th>
-                                                            <th>Role</th>
+                                                            <th>Name</th>
+                                                            <th>Type</th>
+                                                            <th>Picture</th>
+                                                            <th>Embed</th>
+                                                            <th>Live</th> 
                                                             <th>Actions</th>
                                                         </tr>
                                                     </thead>
@@ -205,6 +219,8 @@ else {$id=$this->session->userdata("id");
         <script src="<?php echo base_url();?>assets/dashboard/js/modernizr.min.js"></script>
         <script src="<?php echo base_url();?>assets/dashboard/js/jquery.slimscroll.min.js"></script>
         <script src="<?php echo base_url();?>assets/dashboard/js/slidebars.min.js"></script>
+        <!-- <script src=" <?php echo base_url();?>assets/vendor/jquery-ui/external/jquery/jquery.js"></script> -->
+        <script src=" <?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
 
         <!--plugins js-->
         <script src="<?php echo base_url();?>assets/dashboard/plugins/counter/jquery.counterup.min.js"></script>
@@ -230,7 +246,9 @@ else {$id=$this->session->userdata("id");
         </script>
         <!-- data table js -->
         <script src="<?php echo base_url('assets/vendor/datatables/js/jquery.dataTables.min.js')?>"></script>
-<!-- <script src="<?php echo base_url('assets/vendor/datatables/js/dataTables.bootstrap.min.js')?>"></script> -->
+        <!-- summernote -->
+        <script src="<?php echo base_url('assets/vendor/summernote/summernote.min.js')?>"></script>
+        
         <script type="text/javascript">
 
 var save_method; //for save method string
@@ -248,7 +266,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('UserCtrl/ajax_list');?>",
+            "url": "<?php echo site_url('Sitectrl/ajax_list');?>",
             "type": "POST"
         },
 
@@ -267,49 +285,67 @@ $(document).ready(function() {
     });
 
     //datepicker
-    $('.datepicker').datepicker({
-        autoclose: true,
-        format: "yyyy-mm-dd",
-        todayHighlight: true,
-        orientation: "top auto",
-        todayBtn: true,
-        todayHighlight: true,  
-    });
+    $( ".date-picker" ).datepicker({
+	inline: true,
+    yearRange: '2021:2021',
+    minDate: '0',
+    // dateFormat: 'dd/mm/yy',
+     
+
+});
+$('#summernote').summernote();
 
     //set input/textarea/select event when change value, remove class error and remove text help block 
-    $("input").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("textarea").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("select").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
+    // $("input").change(function(){
+    //     $(this).parent().parent().removeClass('has-error');
+    //     $(this).next().empty();
+    // });
+    // $("textarea").change(function(){
+    //     $(this).parent().parent().removeClass('has-error');
+    //     $(this).next().empty();
+    // });
+    // $("select").change(function(){
+    //     $(this).parent().parent().removeClass('has-error');
+    //     $(this).next().empty();
+    // });
 
 });
 
 
 
-function add_person()
-{
+function add_tour()
+{   $('#summernote').summernote();
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Add Booking'); // Set Title to Bootstrap modal title
 
     $('#photo-preview').hide(); // hide photo preview modal
 
     $('#label-photo').text('Upload Photo'); // label photo upload
 }
-
-function edit_person(id)
+function abook(id)
 {
+    $.ajax({
+        url : "<?php echo site_url('Sitectrl/activateBook')?>/" + id,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data)
+        {
+            // $('#actbook').hide();
+            // $('#actbook').hide();
+                reload_table();
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+function edit_tour(id)
+{   $('#summernote').summernote();
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
@@ -318,41 +354,47 @@ function edit_person(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('UserCtrl/ajax_edit')?>/" + id,
+        url : "<?php echo site_url('Sitectrl/ajax_edit')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
  
-            $('[name="user_id"]').val(data.id);
-            $('[name="user_name"]').val(data.username);
-            $('[name="user_fname"]').val(data.first_name);
-            $('[name="user_lname"]').val(data.last_name);
-            // $('[name="user_sex"]').val(data.user_sex).change();
-            $('[name="user_email"]').val(data.email);
-            $('[name="user_role"]').val(data.role).change();
-            $('[name="user_phone"]').val(data.phone);
-            $('[name="user_password"]').val(data.password);
-           // $('[name="dob"]').datepicker('update',data.dob);
+            $('[name="site_id"]').val(data.site_id);
+            $('[name="name"]').val(data.name);
+            $('[name="detail"]').summernote("code",data.detail);
+            $('[name="embed"]').val(data.embed);
+            $('[name="type"]').val(data.type).change();
+            $('[name="active"]').val(data.active).change(); 
+
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Person'); // Set title to Bootstrap modal title
-
+            $('.modal-title').text('Edit Booking'); // Set title to Bootstrap modal title
+ 
             $('#photo-preview').show(); // show photo preview modal
-
-            if(data.user_photo)
-            {
+       if(data.img){
+           if(data.type=="Panaroma"){
+            $('#label-photo').text('Change Photo'); // label photo upload
+    $('#photo-preview div').html('<img width="100" height="50" src="'+base_url+'uploads/panaroma/'+data.img+'" class="img-responsive">'); // show photo
+               }
+               else if(data.type=="Carousel"){
                 $('#label-photo').text('Change Photo'); // label photo upload
-                $('#photo-preview div').html('<img width="100" height="100" src="'+base_url+'assets/users/'+data.user_photo+'" class="img-responsive">'); // show photo
-                $('#photo-preview div').append('<input type="checkbox" name="remove_photo" value="'+data.user_photo+'"/> Remove photo when saving'); // remove photo
+    $('#photo-preview div').html('<img width="100" height="50" src="'+base_url+'uploads/carousel/'+data.img+'" class="img-responsive">'); // show photo
+                 
+               }
+               else{
+                $('#label-photo').text(''); 
+    $('#photo-preview div').html(''); 
+               }
+   
 
-            }
-            else
-            {
-                $('#label-photo').text('Upload Photo'); // label photo upload
-                $('#photo-preview div').text('(No photo)');
-            }
+      }
+    else
+    {
+    $('#label-photo').text('Upload Image'); // label photo upload
+    $('#photo-preview div').text('Carousel or Panaroma');
+   }
 
-
+             
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -373,9 +415,9 @@ function save()
     var url;
 
     if(save_method == 'add') {
-        url = "<?php echo site_url('UserCtrl/ajax_add')?>";
+        url = "<?php echo site_url('Sitectrl/ajax_add')?>";
     } else {
-        url = "<?php echo site_url('UserCtrl/ajax_update')?>";
+        url = "<?php echo site_url('Sitectrl/ajax_update')?>";
     }
 
     // ajax adding data to database
@@ -419,13 +461,13 @@ function save()
     });
 }
 
-function delete_person(id)
+function delete_tour(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('UserCtrl/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('Sitectrl/ajax_delete')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -441,6 +483,7 @@ function delete_person(id)
         });
 
     }
+    
 }
 
 </script>
@@ -451,74 +494,63 @@ function delete_person(id)
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">User Form</h3>
+                <!-- <h3 class="modal-title">Booking Form</h3> -->
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="user_id"/> 
+                    <input type="hidden" value="" name="site_id"/> 
                     <div class="form-body">
                     <div class="form-group">
-                            <label class="control-label col-md-3">User Name</label>
+                            <label class="control-label col-md-3">Name</label>
                             <div class="col-md-9">
-                                <input name="user_name" placeholder="User Name" class="form-control" type="text">
+                                <input name="name" placeholder="" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Password</label>
-                            <div class="col-md-9">
-                                <input name="user_password" placeholder="" class="form-control" type="password">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">First Name</label>
-                            <div class="col-md-9">
-                                <input name="user_fname" placeholder="First Name" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Last Name</label>
-                            <div class="col-md-9">
-                                <input name="user_lname" placeholder="Last Name" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
+                    </div>
                         <!-- <div class="form-group">
-                            <label class="control-label col-md-3">Gender</label>
-                            <div class="col-md-9">
-                                <select name="user_sex" class="form-control">
-                                    <option value="">--Select Gender--</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
+                        <label class="control-label col-md-3">Descriptions</label>
+                           <textarea name="detail" ></textarea>
                         </div> -->
                         <div class="form-group">
-                            <label class="control-label col-md-3">Email</label>
+                            <label class="control-label col-md-3">Category</label>
                             <div class="col-md-9">
-                            <input name="user_email" placeholder="jhon doe@gmail.com" class="form-control" type="email">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="control-label col-md-3" readon>Role</label>
-                            <div class="col-md-9">
-                            <select name="user_role" class="form-control"> 
-                                    <option value="">--Select Role--</option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="User">User</option>
+                                <select name="type" class="form-control">
+                                    <option value="Carousel">- select -</option> 
+                                    <option value="Carousel">Carousel</option>
+                                    <option value="Panaroma">Panaroma</option>
+                                    <option value="VR">VR</option>
                                 </select>
                                 <span class="help-block"></span>
                             </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Active on Site</label>
+                            <div class="col-md-9">
+                                <select name="active" class="form-control">
+                                    <option value="1">Active</option> 
+                                    <option value="0">Disabled</option>
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Embed Code</label>
+                            <div class="col-md-9">
+                                <input name="embed" placeholder="" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                    </div>
+                        <div class="form-group" id="photo-preview">
+                            <label class="control-label col-md-3">Image</label>
+                            <div class="col-md-9">
+                                
+                                <span class="help-block"></span>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Phone</label>
+                            <label class="control-label col-md-3" id="label-photo">Carousel/Panaroma </label>
                             <div class="col-md-9">
-                            <input name="user_phone" placeholder="+(251)000,0000" class="form-control" type="phone">
+                                <input name="fileToUpload" type="file">
                                 <span class="help-block"></span>
                             </div>
                         </div>

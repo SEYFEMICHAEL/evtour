@@ -80,7 +80,9 @@ else {$id=$this->session->userdata("id");
                         <li class="active">
                             <a href="<?php echo base_url('admin/tourmgmt');?>"><i class="mdi mdi-google-earth"></i> <span>Tours</span></a>
                         </li>
-
+                        <li class="">
+                            <a href="<?php echo base_url('admin/panvrmgmt');?>"><i class="mdi mdi-google-earth"></i> <span>VR</span></a>
+                        </li>
 
 
                          

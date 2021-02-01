@@ -15,7 +15,7 @@ class TourModel extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
- 
+	
 	private function _get_datatables_query()
 	{
 
@@ -64,7 +64,14 @@ class TourModel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+function get_category(){
+	$this->db->select('name');
+	$this->db->from($this->table);
+	$this->db->where('active',1);
+	$query = $this->db->get();
 
+	return $query->result();
+}
 	function count_filtered()
 	{
 		$this->_get_datatables_query();

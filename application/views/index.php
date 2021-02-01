@@ -190,7 +190,7 @@ class="close" title="Close Modal">&times;</span>
             <ul>
                 <li class="active"><a href="<?php echo base_url();?>homepage">Home</a></li>
                 <li><a href="#">Atractions</a>
-                            <ul class="header__menu__dropdown">
+                 <ul class="header__menu__dropdown">
                              <li><a href="#">Historic Attractions</a></li>
                              <li><a href="#">Natural Attractions</a></li>
                              <li><a href="#">National Parks</a></li>
@@ -307,8 +307,8 @@ class="close" title="Close Modal">&times;</span>
    <div style="padding:20px;">
                         <h3>Panorama Tours</h3>
         </div>
-<div class="products-list" style="padding:1%; margin:auto;">
-<div class="product-card">
+<div class="panaromaview products-list" style="padding:1%; margin:auto;">
+<!-- <div class="product-card">
   <div id="panorama" class="product-img panorama-view"></div>
   <div class="product-info"><h5>360 Preview</h5><h6>click to activate</h6> </div>  
 </div>
@@ -339,7 +339,7 @@ class="close" title="Close Modal">&times;</span>
 <div class="product-card">
   <div class="product-img panorama-view"><img src="<?php  echo base_url();?>assets/product/featured/6.jpg" alt=""></div>
   <div class="product-info"><h5>Panorama Preview</h5><h6> click to activate</h6> </div>  
-</div>
+</div> -->
 
 </div>
 </section>              
@@ -348,9 +348,9 @@ class="close" title="Close Modal">&times;</span>
    <div class="">
                         <h3>VR Video Tours</h3>
         </div>
-<div class="products-list" style="padding:1%; margin:auto;">
+<div class="vrview products-list" style="padding:1%; margin:auto;">
  
-<div class="product-card">
+<!-- <div class="product-card">
   <iframe class="product-img panorama-view" src="https://www.youtube.com/embed/TTkUxrOXByU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="product-info"><h5><b>VR</b> Entoto Park</h5></div>  
 </div>
@@ -365,11 +365,17 @@ class="close" title="Close Modal">&times;</span>
 <div class="product-card">
   <iframe class="product-img panorama-view" src="https://www.youtube.com/embed/TTkUxrOXByU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="product-info"></div>  
-</div>
+</div> -->
  
 
 </div>
-</section>              
+</section>         
+<section class="panaromacont">
+
+</section>  
+<section class="vrcont">
+
+</section>     
 
 
     <!-- Footer Section Begin -->
@@ -431,192 +437,61 @@ function topFunction() {
 
 
 
-viewer = pannellum.viewer('panorama', ﻿{
-    "default": {
-        "author": "EVTour",
-        "firstScene": "equirectangular",
-        "autoLoad": true
-    },
+// viewer = pannellum.viewer('panorama', ﻿{
+//     "default": {
+//         "author": "EVTour",
+//         "firstScene": "equirectangular",
+//         "autoLoad": true
+//     },
     
-    "scenes": {
-        "cube": {
-            "title": "cube title",
-            "type": "cubemap",
-            "cubeMap": [
-                "../examples/multires/1/f00.png",
-                "../examples/multires/1/r00.png",
-                "../examples/multires/1/b00.png",
-                "../examples/multires/1/l00.png",
-                "../examples/multires/1/u00.png",
-                "../examples/multires/1/d00.png"
-            ],
-            "hotSpots": [
-                {
-                    "pitch": -12,
-                    "yaw": 170,
-                    "type": "info",
-                    "text": "info test"
-                },
-                {
-                    "pitch": -10,
-                    "yaw": -50,
-                    "type": "info",
-                    "text": "link test",
-                    "URL": "https://github.com/mpetroff/pannellum"
-                },
-                {
-                    "pitch": 0,
-                    "yaw": -10,
-                    "type": "scene",
-                    "text": "scene test",
-                    "sceneId": "multires"
-                }
-            ]
-        },
-
-        "equirectangular": {
-            "title": "Sample Road",
-            "panorama": "<?php echo base_url();?>assets/pano/pano.jpg"
-        },
-
-        "multires": {
-            "title": "multires title",
-            "type": "multires",
-            "hfov": 85,
-            "multiRes": {
-                "basePath": "../examples/multires",
-                "path": "/%l/%s%x%y",
-                "fallbackPath": "/fallback/%s",
-                "extension": "png",
-                "tileResolution": 256,
-                "maxLevel": 4,
-                "cubeResolution": 2048
-            }
-        }
-    }
-});
-viewer = pannellum.viewer('semenmount', ﻿{
-    "default": {
-        "author": "EVTour",
-        "firstScene": "equirectangular",
-        "autoLoad": true
-    },
-    "scenes": {
-    "equirectangular": {
-            "title": "Semen Mountain",
-            "panorama": "<?php echo base_url();?>assets/product/featured/panorama-sm.jpg"
-        }}
-    });    
-viewer = pannellum.viewer('dallol', ﻿{
-    "default": {
-        "author": "EVTour",
-        "firstScene": "equirectangular",
-        "autoLoad": true
-    },
-    "scenes": {
-    "equirectangular": {
-            "title": "Dallol Depression",
-            "panorama": "<?php echo base_url();?>assets/product/featured/panorama-dallol.jpg"
-        }}
-    });        
+//     "scenes": {
+//         "equirectangular": {
+//             "title": "Sample Road",
+//             "panorama": "<?php echo base_url();?>assets/pano/pano.jpg"
+//         }
+//     }
+// });
+// viewer = pannellum.viewer('semenmount', ﻿{
+//     "default": {
+//         "author": "EVTour",
+//         "firstScene": "equirectangular",
+//         "autoLoad": true
+//     },
+//     "scenes": {
+//     "equirectangular": {
+//             "title": "Semen Mountain",
+//             "panorama": "<?php echo base_url();?>assets/product/featured/panorama-sm.jpg"
+//         }}
+//     });    
+// viewer = pannellum.viewer('dallol', ﻿{
+//     "default": {
+//         "author": "EVTour",
+//         "firstScene": "equirectangular",
+//         "autoLoad": true
+//     },
+//     "scenes": {
+//     "equirectangular": {
+//             "title": "Dallol Depression",
+//             "panorama": "<?php echo base_url();?>assets/product/featured/panorama-dallol.jpg"
+//         }}
+//     });        
 //---------------------------------    
 $(document).ready(function () {
-    $.ajax({
-		
-        url : "<?php echo base_url('Ad/premiumProduct')?>",
-        type: "GET",
-        dataType: "JSON",
-		 
-        success: function(D)
-        {  
-            //$("#show-list").html(data);(())
-            let surl="<?php echo base_url('detail')?>";
-			if (D){
-                // $('.pc').addClass('categories__slider');
-                D.forEach(element => {
-                    console.log(element.id);
-                    $(".pc").append(`<a href="${surl}/${element.id}"><div class="prd ml-2">
-                        <div class="cate"><img class="img-responsive" src="<?php  echo base_url();?>assets/product/featured/${element.img}" alt="Card image cap">
-                            <h5 class="text-center pt-0"style="background-color:#fff;opacity:0.7;">${element.name}</h5>
-                        </div>
-                        <!-- h6 class="text-center pt-0" style="background-color:#fff;color:#f00;opacity:0.7;">${element.detail} ብር</h6 -->
-                    </div></a>`);
-                    //$('.cata').ad=dClass('categories__item set-bg');
-                    });
-//                     $(".carousel-inner").append(`<div class="carousel-item">
-//                     <div class="card" style="width: 18rem; ">
-//   <img class="card-img-top" src="<?php  echo base_url();?>assets/img/${element.img1}" alt="Card image cap">
-//   <div class="card-body">
-//     <p class="card-text">${element.title}</p>
-//   </div> 
-//     </div>
-//     </div>`);});
-    // $(".carousel-inner div").first().addClass('active');
-
-//                     $('.pc').append(`
-//                     <div class="card" style="width: 18rem; ">
-//   <img class="card-img-top" src="<?php  echo base_url();?>assets/img/${element.img1}" alt="Card image cap">
-//   <div class="card-body">
-//     <p class="card-text">${element.title}</p>
-//   </div>
-// </div>`);    
- $('.prd').css({"border-radius": "10px 10px 10px 10px","border": "1px solid #756d75","box-shadow": "-2px 9px 43px -31px rgba(0,0,0,1);"});
-                $('.pc').addClass('owl-carousel');
-                 $(".owl-carousel").owlCarousel({
-                    loop:true,lazyLoad: true,
-    margin:10,
-    autoplay:true,
-    // autoplayTimeout:1000,
-    autoplayHoverPause:true,
-    responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,
-            // nav:true
-        },
-        420:{
-            items:2,
-            // nav:false
-        },
-        600:{
-            items:3,
-            // nav:false
-        },
-        1000:{
-            items:4,
-            // nav:true,
-            // loop:false
-        }}
-                 });
-                // $('.categories__slider').addClass('owl-carousel owl-loaded owl-drag');categories__item set-bg
-                //$('.pc').owlCarousel();
-                //console.log(data.length);
-
- 
-                                
-				// $("#show-list").html('<p class="list-group-item border-1">No Record</p>');
-			}
-			// console.log(data.type());
-			else{
-                
-		// 		for(let i=0;i<data.length;i++) {
-		// 		$("#show-list").append('<a href="#" class="list-group-item list-group-item-action border-1">' + data[i]['title'] + '</a>');
-       		 
-        //    }
-			}
-            
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-             console.log('Error get data from ajax');
-			//$("#show-list").html("");
-        }
-    });
+     //   top banner start
+     $('.top-banner').addClass('owl-carousel');
+          $(".owl-carousel").owlCarousel({ 
+            items:1, 
+         loop:true,
+         autoplay:true,
+         autoplayTimeout:4000,
+         autoplayHoverPause:false
+          });
+//   top banner end
 //-----------------------------
 
 $.ajax({
 		
-        url : "<?php echo base_url('Ad/premiumBusiness')?>",
+        url : "<?php echo base_url('sitectrl/getPanaroma')?>",
         type: "GET",
         dataType: "JSON",
 		 
@@ -627,144 +502,86 @@ $.ajax({
                 // $('.pc').addClass('categories__slider');
                 D.forEach(element => {
                     // console.log(element.title);
-                    $(".bc").append(`<div class="ml-2">
-                        <div class="cata"  style="text-align:center; background-image: url('<?php echo base_url(); ?>uploads/tour/${element.img}'); background-size: contain;
-background-repeat: no-repeat;height:200px;">
-                             
-                        </div>
+                    $(".panaromaview").append(`<div class="product-card"> 
+                    <div id="p_5${element.site_id}" class="product-img panorama-view"></div> 
                     </div>`); 
+                    var panid=`p_5${element.site_id}`;
+                    var imgurl=`<?php echo base_url();?>uploads/panaroma/${element.img}`;
+                    // alert(panid);
+                    viewer = pannellum.viewer(panid, ﻿{
+    "default": {
+        "author": "EVTour",
+        "firstScene": "equirectangular",
+        "autoLoad": true
+    },
+    
+    "scenes": {
+        "equirectangular": {
+            "title": element.name,
+            "panorama": imgurl
+        }
+    }
+});
                     });
-//   top banner start
-        $('.top-banner').addClass('owl-carousel');
-          $(".owl-carousel").owlCarousel({ 
-            items:1, 
-         loop:true,
-         autoplay:true,
-         autoplayTimeout:5000,
-         autoplayHoverPause:true
-          });
-//   top banner end
-
-//   top ad start
-$('.top-banner-ads').addClass('owl-carousel');
-          $(".owl-carousel").owlCarousel({ 
-            items:4, 
-         loop:true,
-         margin:10,
-         autoplay:true, 
-         autoplayHoverPause:true
-          });
-          
-//   top ad end
-
-//   slide-bottom-banner start 
-$('.slide-bottom-banner').addClass('owl-carousel');
-          $(".owl-carousel").owlCarousel({  
-         loop:true, 
-         autoplay:true,
-         margin:10,
-         autoplayHoverPause:true,
-    responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,
-            // nav:true
-        },
-        420:{
-            items:2,
-            // nav:false
-        },
-        600:{
-            items:2,
-            // nav:false
-        },
-        1000:{
-            items:2,
-            // nav:true,
-            // loop:false
-        }}
-          });
-           
-//   slide-bottom-banner end
-
-
-//   slide-bottom-banner-thin start 
-$('.slide-bottom-banner-thin').addClass('owl-carousel');
-          $(".owl-carousel").owlCarousel({  
-          
-         loop:true, 
-         autoplay:true, 
-         autoplayHoverPause:true, 
-         responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,
-            // nav:true
-        },
-        420:{
-            items:1,
-            // nav:false
-        },
-        600:{
-            items:1,
-            // nav:false
-        },
-        1000:{
-            items:1,
-            // nav:true,
-            // loop:false
-        }}
-          });
-           
-//   slide-bottom-banner-thin end
 
 
 
-//  product list 
-                $('.bc').addClass('owl-carousel');
-                 $(".owl-carousel").owlCarousel({
-                    loop:true,lazyLoad: true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:10000,
-    autoplayHoverPause:true,
-    responsiveClass:true,
-    responsive:{
-        0:{
-            items:1,
-            // nav:true
-        },
-        420:{
-            items:2,
-            // nav:false
-        },
-        600:{
-            items:3,
-            // nav:false
-        },
-        1000:{
-            items:4,
-            // nav:true,
-            // loop:false
-        }}
-                 }); 
+
+
+
 			}
 			// console.log(data.type());
 			else{ 
 			}
             
-        },
+        },//end ajax success====
+
         error: function (jqXHR, textStatus, errorThrown)
         {
-             console.log('Error get data from ajax');
+             console.log('Error get carousel');
 			//$("#show-list").html("");
         }
     });
 
-
-
-
      //----------------------------
+     $.ajax({
+		
+        url : "<?php echo base_url('sitectrl/getVR')?>",
+        type: "GET",
+        dataType: "JSON",
+		 
+        success: function(D)
+        {  
+            //$("#show-list").html(data);(())
+			if (D){
+                // $('.pc').addClass('categories__slider');
+                D.forEach(element => {
+                    // console.log(element.title);
+                    $(".vrview").append(`<div class="product-card">
+                    <iframe class="product-img panorama-view"
+ src="https://www.youtube.com/embed/${element.embed}" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen>
+</iframe><div class="product-info"><b>${element.name}</b></div>  
+</div>`); 
+                    });
+
+
+			}
+			// console.log(data.type());
+			else{ 
+			}
+            
+        },//end ajax success====
+
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+             console.log('Error get VR');
+			//$("#show-list").html("");
+        }
+    });
+    // --------------------------
+
 	 $("#search").keyup(function () {
 		$("#show-list").html("");
 		 console.log('search');
@@ -800,7 +617,8 @@ $('.slide-bottom-banner-thin').addClass('owl-carousel');
 			$("#show-list").html("");
         }
     });
-	}});
+    }});
+    
     var stxt='';
 	$('#show-list').on("click", "a", function () {
         stxt=$(this).text();
@@ -832,8 +650,6 @@ $('.slide-bottom-banner-thin').addClass('owl-carousel');
 			}
 			
 			else{
-         //$(".lcard").html('');
-        // $(".pageto").html("");
         for(let i=0;i<data['data'].length;i++) {
           console.log('lcard');
 		$(".l_card").append(`
@@ -846,18 +662,11 @@ $('.slide-bottom-banner-thin').addClass('owl-carousel');
        		//  echo '<a href="#" class="list-group-item list-group-item-action border-1">' . $row['title'] . '</a>';
            }
           
-		//    for(let i=0;i<data['page'].length;i++) {
-		// 	$(".pageto").append(data['page'][i]);//1 2 3 4
-		//    }
-		  
 			}
             
         },
         error: function (jqXHR, textStatus, errorThrown)
-        {
-            // alert('Error get data from ajax');
-            // $(".lcard").html('');
-            // $(".pageto").html("");
+        { 
         }
     });}
   }

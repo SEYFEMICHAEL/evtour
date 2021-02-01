@@ -45,8 +45,8 @@ public function tour_mgmt(){
 	$this->load->view('dashboard/tour/table');
 }
 
-public function site_mgmt(){
-	$this->load->view('dashboard/book/table');
+public function panvr_mgmt(){
+	$this->load->view('dashboard/panvr/table');
 }
 
 

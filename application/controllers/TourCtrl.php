@@ -12,7 +12,7 @@ class TourCtrl extends CI_Controller {
 		$this->load->helper(array('form','url'));
 		$this->load->library(array('form_validation','session'));
 	}
-
+	
 // public function callbackV(){
 // 	//|is_unique[]
 // 	$this->form_validation->set_rules('user_fname','FirstName','trim|xss_clean|required|min_length[5]|callback__name_check');
@@ -74,6 +74,11 @@ public function name_check($str)
 		$data = $this->Tour->get_by_user_id($user_id);
 		//$data->user_role = ($data->user_role == '0000-00-00') ? '' : $data->user_role; // if 0000-00-00 set tu empty for datepicker compatibility
 		echo json_encode($data);
+	}
+
+	public function category_list()
+	{
+		$data = $this->Tour->get_category(); echo json_encode($data);
 	}
 
 	public function ajax_add()

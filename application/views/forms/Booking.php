@@ -28,13 +28,8 @@ else {$id=$this->session->userdata("id");
                 </div>
                 
                 <div class="form-group">
-                <label class="control-label "> </label>    
-                 <select name="place" >
-                     <option value="">select place</option>
-                     <option value="Erta Ale">Erta Ale</option>
-                     <option value="Sof Omar">Sof Omar</option>
-                     <option value="Axum">Axum</option>
-                </select> 
+                <label class="control-label ">Attraction Place </label> 
+                <div class="place"  ></div> 
         <div class="text-danger"><small><?php echo form_error("place"); ?> </small></div>
                 </div>
                  

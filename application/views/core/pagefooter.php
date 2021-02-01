@@ -35,6 +35,7 @@
     <script src=" <?php echo base_url();?>assets/vendor/js/main.js"></script>
     
     <script>
+        
 //Get the button:
 mybutton = document.getElementById("myBtn");
 
@@ -57,6 +58,28 @@ function topFunction() {
     
 //---------------------------------    
 $(document).ready(function () {
+    $.ajax({
+		
+        url : "<?php echo base_url('tourctrl/category_list')?>",
+        type: "GET",
+        dataType: "JSON",
+		success: function(D){ 
+            // alert(D[0]['name']);
+			if (D){  
+                $('.place').append("<select id='pls' name='place' >");
+                D.forEach(element  => { 
+                    $('#pls').append(`<option value="${element['name']}">${element['name']}</option>`);
+                    // $('#pls').innerHTML +=`<option value="${element['name']}">${element['name']}</option>`;
+                });   
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {   console.log('cant load categoty'); 
+			
+        }
+    });
+
     $( ".date-picker" ).datepicker({
 	inline: true,
     yearRange: '2021:2021',
@@ -65,7 +88,7 @@ $(document).ready(function () {
      
 
 });
-//-----------------------------
+//-category_list()----------------------------
 //   carousel start
         $('.top-banner').addClass('owl-carousel');
           $(".owl-carousel").owlCarousel({ 

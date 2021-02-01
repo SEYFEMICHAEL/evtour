@@ -90,10 +90,11 @@ public function ajax_list()
 	public function ajax_update()
 	{//adminmd5->e3afed0047b08059d0fada10f400c1e5
 		$this->_validate();
+		$pass=$this->input->post('user_password');
 		$data = array(
 			'username' => $this->input->post('user_name'),
             'first_name' => $this->input->post('user_fname'),
-            'password'=>sha1($this->input->post('user_password')),
+            'password'=>(strlen($pass)>20)?$pass:sha1($pass),
             'last_name' => $this->input->post('user_lname'),
             // 'user_sex' => $this->input->post('user_sex'),
             'role' => $this->input->post('user_role'),

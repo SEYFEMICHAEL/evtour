@@ -83,6 +83,7 @@ $route['admin'] = 'SignUpCtrl/admin';
 $route['admin/bookmgmt']='home/book_mgmt';
 $route['admin/usermgmt']='home/user_mgmt';
 $route['admin/tourmgmt']='home/tour_mgmt';
+$route['admin/panvrmgmt']='home/panvr_mgmt';
 
 
 $route['test']='test/index';

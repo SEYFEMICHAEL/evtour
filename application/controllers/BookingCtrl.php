@@ -34,8 +34,9 @@ class BookingCtrl extends CI_Controller {
 
             if ($isDone === TRUE) {
                 //$this->session->set_flashdata("reg", "Registration Successful!");
-            //    redirect(base_url());
-            redirect(base_url('viewbooking/'.$id.''));
+			//    redirect(base_url());
+			$url='viewbooking/'.$this->session->userdata('id');
+            redirect(base_url($url));
                 //$this->load->view('thanks');
             }
         }
