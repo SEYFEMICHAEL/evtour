@@ -171,7 +171,7 @@ else {$id=$this->session->userdata("id");
                         </div>
                     </div><!--end row-->
                     <div class="row"> 
-                        <div class="col-lg-12 col-sm-12">
+                       <!--  <div class="col-lg-12 col-sm-12">
                             <div class="card m-b-30">
                                 <div class="card-body">
                                     <h5 class="header-title pb-3">Recent Contacts</h5>           
@@ -253,10 +253,10 @@ else {$id=$this->session->userdata("id");
                                     </div>              
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         
-                    </div>                            
+                    </div>  <!--end row-->                          
                     
                 </div><!--end container-->
 
